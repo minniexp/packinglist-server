@@ -28,6 +28,42 @@ router.post("/additem", (req, res) => {
   res.send("Response Received:" + req.body);
 });
 
+router.post("/createList", (req, res) => {
+  console.log("creating new list");
+  const title = req.body.title;
+
+  console.log("title:" + title);
+
+  const insertSTMT = `INSERT INTO allitems (title) VALUES ( '${title}');`;
+  const getSTMT = `SELECT id FROM allitems WHERE title = ('${title}') ORDER BY id ASC;`;
+
+  pool
+    .query(insertSTMT)
+    .then((response) => {
+      console.log("data saved");
+      console.log("insert resopnse", response)
+      pool.query(getSTMT).then((response) => {
+        console.log("got id of new list");
+        res.send(response);
+      });
+    })
+
+    .catch((err) => {
+      console.log(err);
+    });
+
+  console.log(req.body);
+  console.log("res", res);
+
+  // res.send("Response Received from created list:" + req.body);
+
+  ///////
+
+  // const getSTMT = `SELECT * FROM allitems WHERE title = (SELECT title FROM allitems WHERE id = '${listID}');`;
+
+
+});
+
 // EDIT
 router.post("/edititem", (req, res) => {
   const id = req.body.id;
