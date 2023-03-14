@@ -7,8 +7,8 @@ router.get("/getAllLists", (req, res) => {
 
   pool.query(getSTMT).then((resopnse) => {
     console.log("got list");
-    res.send(resopnse);
-  });
+    // res.send(resopnse);
+  }).catch(e => console.log("error is", e));
 });
 
 router.get("/getlist/list/:listID", (req, res) => {

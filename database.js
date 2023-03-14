@@ -1,11 +1,12 @@
 const { Pool } = require("pg");
 
 const pool = new Pool({
-  user: "finalcheck_user",
-  password: process.env.REACT_APP_DATABASE_PASSWORD,
-  host: "dpg-ceaemeta4996meb7np50-a.ohio-postgres.render.com",
+  user: "finalcheck_user_user",
+  // password: process.env.REACT_APP_DATABASE_PASSWORD,
+  password: "T6Lyt0MfLZLdTNuceo3DXlDopSuQ7ErK",
+  host: "dpg-cg7al71mbg5ab7nkv110-a.ohio-postgres.render.com",
   port: 5432,
-  database: "finalcheck",
+  database: "finalcheck_user",
   ssl: true,
 });
 
