@@ -3,11 +3,12 @@ const pool = require("../../database");
 
 // GET REQUESTS
 router.get("/getAllLists", (req, res) => {
+  console.log()
   const getSTMT = `SELECT DISTINCT ON (title) id, title FROM allitems`;
 
   pool.query(getSTMT).then((resopnse) => {
     console.log("got list");
-    // res.send(resopnse);
+    res.send(resopnse);
   }).catch(e => console.log("error is", e));
 });
 
