@@ -21,17 +21,24 @@ app.use("/api/v1/finalcheck", postPackingListRoutes);
 
 app.use("/api/v1/finalcheck", getPackingListRoutes);
 
-pool.query("CREATE TABLE allitems(id SERIAL NOT NULL, title varchar(100), category varchar(200), item varchar(200), PRIMARY KEY(ID));", (err, res) => {
-    console.log(err, res);
-    pool.end();
-});
+const createTable = () => {try{
+    pool.query("CREATE TABLE allitems(id SERIAL NOT NULL, title varchar(100), category varchar(200), item varchar(200), PRIMARY KEY(ID));", (err, res) => {
+        console.log(err, res);
+        // pool.end();
+    });
+    console.log("creating table")
+} catch {
+    console.log("table exists")
+}
+}
+createTable()
 // app.get("/", (req, res) => {
 //   res.send("finalcheck server running");
 // });
 
 // POST REQUESTS
 
-app.listen(4000, () => console.log("Server on localhost: 4000"));
+app.listen(5000, () => console.log("Server on localhost: 5000"));
 
 /* FOR LATER - with user 
 app.get("/getuser", (req, res) => {
