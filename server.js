@@ -21,9 +21,13 @@ app.use("/api/v1/finalcheck", postPackingListRoutes);
 
 app.use("/api/v1/finalcheck", getPackingListRoutes);
 
-app.get("/", (req, res) => {
-  res.send("finalcheck server running");
+pool.query("CREATE TABLE allitems(id SERIAL NOT NULL, title varchar(100), category varchar(200), item varchar(200), PRIMARY KEY(ID));", (err, res) => {
+    console.log(err, res);
+    pool.end();
 });
+// app.get("/", (req, res) => {
+//   res.send("finalcheck server running");
+// });
 
 // POST REQUESTS
 
