@@ -5,7 +5,7 @@ const pool = new Pool({
   password: process.env.REACT_APP_DATABASE_PASSWORD,
   host: "dpg-cq5lmjmehbks73bqnqv0-a.ohio-postgres.render.com",
   port: 5432,
-  database: "finalcheckv2",
+  database: "finalcheckdb",
   ssl: true,
 });
 
